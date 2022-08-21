@@ -19,6 +19,7 @@ export default function Login() {
       const user = await loginRelatedRequests(endpoint, { email, password });
       localStorage.setItem('user', JSON.stringify(user.data));
       setIsLogged(true);
+      navigate('/expense');
     } catch (error) {
       console.log(error);
       setIsLogged(false);
@@ -28,7 +29,7 @@ export default function Login() {
   useEffect(() => {
     const localUser = JSON.parse(localStorage.getItem('user'));
     if (localUser) {
-      navigate('/construction');
+      navigate('/expense');
       setIsLogged(true);
     }
   }, []);
@@ -38,13 +39,14 @@ export default function Login() {
       <img src="/assets/co.png" width="150"alt="empresa"/>
         <Form onSubmit={ (event) => loginSubmit(event) }>
             <h1>Construction Organizer</h1>
-          <InputForm
+          <input
             name={"E-mail"}
             onChange={ (e) => setEmail(e.target.value) }
           />
-          <InputForm
+
+          <input
             name={"Senha"}
-            type={"password"} 
+            type={"password"}
             onChange={ (e) => setPassword(e.target.value) }
           />
           <ButtonForm text={"Entrar"} />

@@ -7,6 +7,12 @@ const loginRelatedRequests = async (endpoint, body) => {
   return data;
 };
 
+const construcctionGetRequests = async (endpoint) => {
+  const data = await axios.get((baseURL + endpoint));
+  return data;
+};
+
 export {
   loginRelatedRequests,
+  construcctionGetRequests,
 };
