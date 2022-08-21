@@ -16,3 +16,18 @@ export const Container = styled.div`
         font-size:40px;
     }
 `;
+
+export const Form = styled.form`
+    display: flex;
+    width: 50vw;
+    height: 70vh;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-right: 10%;
+    margin-left: 10%;
+    a {
+        color: #efcf25;
+        text-decoration: underline;
+    }
+`;
