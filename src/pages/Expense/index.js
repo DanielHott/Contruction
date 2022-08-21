@@ -36,7 +36,6 @@ export default function Expense() {
       <h1>Lançamento de custos</h1>
       <Button onClick={ (e) => changePage("/constructions") }>Construções</Button>
       <Button onClick={ (e) => changePage("/person") }>Pessoas</Button>
-      <Button onClick={ (e) => changePage("/allExpenses") }>Lista de Despesas</Button>
       <Button onClick={ (e) => changePage("/") }>Sair</Button>
       <Form>
         <h4>Obra:</h4>

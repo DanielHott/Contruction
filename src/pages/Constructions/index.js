@@ -2,15 +2,16 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Container, Form } from "./styles";
 import { construcctionGetRequests } from '../../Services/request';
+import { ButtonForm } from "../../components/Buttons";
 import { Button } from '../../components/Buttons/style';
 
 export default function Constructions() {
   const navigate = useNavigate();
   const [construction, setConstruction] = useState([]);
-  const [type, setType] = useState("");
-  const [local, setLocal] = useState("");
-  const [price, setPrice] = useState("");
-  const [image, setImage] = useState("");
+  const [nomeObra, setNomeObra] = useState("");
+  const [cidade, setCidade] = useState("");
+  const [rua, setRua] = useState("");
+  const [numero, setNumero] = useState("");
 
   const requestConstruction = async () => {
     try {
@@ -33,44 +34,52 @@ export default function Constructions() {
 
   return (
     <Container>
-      <h1>Lançamento de custos</h1>
-      <Button onClick={ (e) => changePage("/construction") }>Construções</Button>
+      <h1>Informações sobre as Obras</h1>
       <Button onClick={ (e) => changePage("/person") }>Pessoas</Button>
+      <Button onClick={ (e) => changePage("/expense") }>Lançamento de Despesas</Button>
       <Button onClick={ (e) => changePage("/allExpenses") }>Lista de Despesas</Button>
       <Button onClick={ (e) => changePage("/") }>Sair</Button>
-      <Form>
-        <h4>Obra:</h4>
-        <select>
+      
+        <h4>Obras Cadastradas</h4>
+        <table>
             {construction && construction.map(
               (info) => (
-                  <option>{info.nomeObra}</option>
+                <tbody>
+                  <td>{info.nomeObra}</td>
+                  <td>{info.cidade}</td>
+                  <td>{info.rua}</td>
+                  <td>{info.numero}</td>
+
+                </tbody>
                 ),
             )}
-        </select>
-        <h4>Tipo de Gasto:</h4>
+        </table>
+      <Form>
+        <h4>Nome da Obra:</h4>
         <input
           name={"Type"}
           type={"string"}
-          onChange={ (e) => setType(e.target.value) }
+          onChange={ (e) => setNomeObra(e.target.value) }
         />
-        <h4>Local/Loja:</h4>
+        <h4>Cidade da Obra:</h4>
         <input
-          name={"Local"}
+          name={"cidade"}
           type={"string"}
-          onChange={ (e) => setLocal(e.target.value) }
+          onChange={ (e) => setCidade(e.target.value) }
         />
-        <h4>Valor Total:</h4>
+        <h4>Rua:</h4>
         <input
-          name={"Valor"}
+          name={"rua"}
           type={"string"}
-          onChange={ (e) => setPrice(e.target.value) }
+          onChange={ (e) => setRua(e.target.value) }
         />
-        <h4>Imagem do Recibo:</h4>
+        <h4>Numero:</h4>
         <input
-          name={"Image"}
+          name={"numero"}
           type={"string"}
-          onChange={ (e) => setImage(e.target.value) }
+          onChange={ (e) => setNumero(e.target.value) }
         />
+        <ButtonForm text={"Inserir"} />
       </Form>
     </Container>
   );
