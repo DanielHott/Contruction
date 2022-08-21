@@ -4,7 +4,7 @@ import { Container, Form } from "./styles";
 import { construcctionGetRequests } from '../../Services/request';
 import { Button } from '../../components/Buttons/style';
 
-export default function Expense() {
+export default function Constructions() {
   const navigate = useNavigate();
   const [construction, setConstruction] = useState([]);
   const [type, setType] = useState("");
@@ -34,7 +34,7 @@ export default function Expense() {
   return (
     <Container>
       <h1>Lançamento de custos</h1>
-      <Button onClick={ (e) => changePage("/constructions") }>Construções</Button>
+      <Button onClick={ (e) => changePage("/construction") }>Construções</Button>
       <Button onClick={ (e) => changePage("/person") }>Pessoas</Button>
       <Button onClick={ (e) => changePage("/allExpenses") }>Lista de Despesas</Button>
       <Button onClick={ (e) => changePage("/") }>Sair</Button>
